@@ -1,0 +1,489 @@
+@import 'reset.scss';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+$grey: #52503B;
+$white: #ffff;
+$yellow: #E08631;
+$beige: #FAF8F0;
+$brown: #494839;
+$dark: #333333;
+
+$maxWidthContainer: 1240px;
+
+%position {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%
+}
+
+%flex {
+    display: flex;
+    align-items: center;
+}
+
+%rect {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 42px;
+    height: 8px;
+    background-color: $yellow;
+    transform: translate(-50%, 0);
+}
+
+@mixin font ($fontSize, $lineHeight, $color, $letterSpacing) {
+    font-size: $fontSize;
+    line-height: $lineHeight;
+    color: $color;
+    letter-spacing: $letterSpacing;
+}
+
+@mixin state ($position, $top, $left, $widht) {
+    position: $position;
+    top: $top;
+    left: $left;
+    width: $widht;
+}
+
+// @mixin rectangle ($content, $position, $top, $left, $widht, $height, $backgroundColor, $transform) {
+//     content: $content;
+//     position: $position;
+//     top: $top;
+//     left: $left;
+//     width: $widht;
+//     height: $height;
+//     background-color: $backgroundColor;
+//     transform: $transform;
+// }
+
+.container {
+    max-width: $maxWidthContainer;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    background-color: $grey;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.wrapper__header {
+    @extend %position;
+    z-index: 300;
+}
+
+.header__inner {
+    @extend %flex;
+    padding: 10px 0;
+    max-height: 80px;
+}
+
+.header__nav {
+    flex: 1 0 auto;
+    margin-left: 345px;
+}
+
+.nav__list {
+    @extend %flex;
+}
+
+.nav__item {
+    margin-left: 24px;
+   @include font(15px, 20px, $white, none);
+}
+
+.nav__item:first-child {
+    margin-left: 0px;
+}
+
+.header__button {
+    background-color: $white;
+    @include font(16px, 20px, $brown, none);
+    padding: 11px 18px;
+    border-radius: 4px;
+}
+
+.about__button {
+    width: 107px;
+    height: 42px;
+    background-color: $grey;
+    @include font(14px, 20px, $white, none);
+    padding: 11px 18px;
+    border-radius: 4px;
+    margin-top: 40px;
+}
+
+.offer {
+    min-height: 100vh;
+    position: relative;
+}
+
+.offer__cover {
+    @include state (absolute, 0, 0, 100%);
+    bottom: 0;
+    right: 0;
+    height: 100%;
+}
+
+.offer__inner {
+    padding: 195px 0 0 0;
+    @extend %flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 10;
+}
+
+.offer__title .title__main {
+    font-size: 48px;
+}
+
+.offer__title .title__item {
+    @include font(14px, 20px, $white, 2px);
+}
+
+.offer__logo {
+    margin-bottom: 32px;
+}
+
+
+.offer__title {
+    margin-bottom: 75px;
+}
+
+.title {
+    max-width: 1200px;
+    text-align: center;
+}
+
+.title__item {
+    @include font(16px, 20px, $white, 2px);
+    text-transform: uppercase;
+}
+
+.title__main {
+    @include font(32px, 52.8px, $white, none);
+    margin-bottom: 35px;
+}
+
+.about {
+    height: 410px;
+    background-color: $beige;
+}
+
+.part {
+    width: 800px;
+    height: 210px;
+    @extend %flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding-bottom: 90px;
+    @include font(13px, 20px, $dark, none);
+}
+
+.about__rectan {
+    margin-top: 100px;
+    margin-bottom: 32px;
+    position: relative;
+}
+
+.about__rectan::after {
+    @extend %rect;
+}
+
+.text {
+    display: flex; 
+    justify-content: space-between;
+}
+
+.text__left {
+    margin-right: 13px;
+    width: 360px;
+    height: 180px;
+
+}
+.text__right {
+    margin-left: 13px;
+    width: 340px;
+}
+
+.form {
+    max-width: 1250px;
+    max-height: 600px;
+    @extend %flex;
+    flex-direction: column;
+    padding-bottom: 140px;
+}
+
+.call__rectan {
+    margin-top: 100px;
+    margin-bottom: 32px;
+}
+
+.call__title {
+    @include font(96px, 96px, $grey, none);
+    font-weight: bold;
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+.goods {
+    background-color: $beige;
+}
+
+.goods__inner {
+    @extend %flex;
+    flex-direction: column;
+    
+}
+
+.goods__rectan {
+    margin-top: 100px;
+    margin-bottom: 38px;
+}
+
+.goods__section {
+    max-width: 1170px;
+    @extend %flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.info {
+    @include font(14px, 20px, $grey, none);
+    margin-top: 32px;
+    margin-bottom: 100px;
+    margin-right: 65px;
+    max-width: 346px;
+}
+
+.info:last-child {
+    margin-right: 0px;
+}
+
+.title__basic {
+    @include font(32px, 36px, $grey, none);
+    margin-bottom: 14px;
+}
+
+.title__subbasic {
+    @include font(16px, 24px, $grey, none);
+    max-width: 550px;
+    margin-bottom: 30px;
+}
+
+.info__icon {
+    margin-bottom: 12px;
+}
+
+.info__title, .info__text {
+    @include font(14px, 20px, $grey, none);
+}
+
+.goods__cool {
+    width: 100%;
+}
+
+.service__rectan {
+    margin-top: 100px;
+    bottom: 30px;
+    position: relative;
+}
+
+.service__rectan::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 42px;
+    height: 8px;
+    background-color: $yellow;
+    transform: translate(0, 0);
+}
+
+.content, .positions {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.content__title {
+    margin-top: 30px;
+    @include font(32px, 36px, $grey, none);
+}
+
+.content__item {
+    margin-top: 12px;
+    max-width: 500px;
+    @include font(14px, 20px, $grey, none);
+}
+
+.positions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left, .right {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+
+.box {
+    @extend %flex;
+    margin-top: 32px;
+}
+
+.box__icon {
+    margin-right: 16px;
+}
+
+.side {
+    display: flex;
+    flex-direction: column;
+}
+
+.coments {
+    background-color: $beige;
+    
+}
+
+.camp {
+    padding-top: 100px;
+    padding-bottom: 70px;
+}
+
+.maine {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 19.62px;
+}
+
+.camp__rectan {
+    position: relative;
+}
+
+.camp__rectan::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    background-color: $yellow;
+    width: 42px;
+    height: 8px;
+    transform: translate(-50%, 0);
+}
+
+.camp__title {
+    margin-top: 38px;
+    @include font(32px, 36px, $grey, none);
+}
+
+.camp__subtitle {
+    margin-bottom: 14px;
+    @include font(16px, 24px, $grey, none);
+}
+
+.aspect {
+    margin-top: 32px;
+    display: flex;
+}
+
+.left-aspect {
+    max-width: 584px;
+    max-height: 266px;
+    padding: 31px;
+    background-color: $white;
+    margin-right: 20px;
+}
+
+.aspect__icon {
+    margin-bottom: 9.62px;
+}
+
+.aspect__title {
+    @include font(18px, 24px, $dark, none);
+}
+
+.aspect__text {
+    @include font(14px, 20px, $dark, none);
+    margin-top: 11px;
+}
+
+.rect {
+    margin-top: 19px;
+}
+
+.aspect__rect {
+    @extend %flex;
+    position: relative;
+}
+
+.aspect__rect::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background-color: $yellow;
+    width: 2px;
+    height: 20px;
+    transform: translate(0, -50%);
+}
+
+.aspect__author {
+    margin-left: 10px;
+    @include font(14px, 20px, $dark, none);
+}
+
+.aspect__right {
+    max-width: 584px;
+    max-height: 246px;
+    padding: 31px;
+    background-color: $white;
+}
+
+.circle {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    margin-right: 100px;
+    margin-bottom: 70px;
+}
+
+.circle__icon {
+    margin-top: 19.62px;
+}
+
+.circle__icon::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    background-color: $beige;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid $grey;
+    transform: translate(0, 0);
+}
+
+.circle__icon-icon::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 94%;
+    background-color: $beige;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid $grey;
+    transform: translate(0, 0);
+}
+
+
